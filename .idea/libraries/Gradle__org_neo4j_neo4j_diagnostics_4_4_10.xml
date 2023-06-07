@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-diagnostics:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-diagnostics/4.4.10/1e28c0137306a81d11b4cc94efa0de2cf38450d1/neo4j-diagnostics-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-diagnostics/4.4.10/575f1d02a0ee8f5a3c8942e19be1db664c8288e8/neo4j-diagnostics-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

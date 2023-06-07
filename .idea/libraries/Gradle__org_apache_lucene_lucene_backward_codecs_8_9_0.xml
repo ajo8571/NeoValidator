@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.lucene:lucene-backward-codecs:8.9.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.lucene/lucene-backward-codecs/8.9.0/fec88b5e71c699ceddc3ae0369481697ac9a5c96/lucene-backward-codecs-8.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.lucene/lucene-backward-codecs/8.9.0/2e79cafd56064709fadacdd3f7bdfe135218d593/lucene-backward-codecs-8.9.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

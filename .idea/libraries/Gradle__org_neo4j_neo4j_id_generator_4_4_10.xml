@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-id-generator:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-id-generator/4.4.10/798e5eaef159e821401b4f3b9af6474da15dafbc/neo4j-id-generator-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-id-generator/4.4.10/d04e618e8eb0e802a17d4d37cffae3d61f40c712/neo4j-id-generator-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

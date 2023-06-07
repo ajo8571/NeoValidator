@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-cypher-javacc-parser:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-cypher-javacc-parser/4.4.10/f7d41de0155d91c786141c226df56c1345c6fcf2/neo4j-cypher-javacc-parser-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-cypher-javacc-parser/4.4.10/88493202068c5724f451a81fe20e07ab29a4ce1f/neo4j-cypher-javacc-parser-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-expressions:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-expressions/4.4.10/23330a7879cae5028837e26d27b51834bdb082b3/neo4j-expressions-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-expressions/4.4.10/f1a1f3485c8070dd34adfeb03719002e513d6295/neo4j-expressions-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

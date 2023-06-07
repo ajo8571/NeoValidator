@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-fulltext-index:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-fulltext-index/4.4.10/6f0045a31b5ce1c4d93f497c12026bfe96bf35d4/neo4j-fulltext-index-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-fulltext-index/4.4.10/83fe02f945557939ad3b22ad046aa16bcde1fbdd/neo4j-fulltext-index-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

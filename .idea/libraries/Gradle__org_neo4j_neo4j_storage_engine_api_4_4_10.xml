@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-storage-engine-api:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-storage-engine-api/4.4.10/326dc29841cbf99fe147978430e8d3b80dc470ff/neo4j-storage-engine-api-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-storage-engine-api/4.4.10/cf2580d16c249b1d587b1d5a5edf3b276e5052a/neo4j-storage-engine-api-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-cypher-ir:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-cypher-ir/4.4.10/8e1c5d56a0be98b9fc022f5770a9391e87c48f5f/neo4j-cypher-ir-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-cypher-ir/4.4.10/fe082be95fc734321b51564d29af86e2aeefbb31/neo4j-cypher-ir-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-monitoring:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-monitoring/4.4.10/35096ca72b41c2fa86c0d896c543c614f7abfee7/neo4j-monitoring-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-monitoring/4.4.10/17c7cc4adf8b3c903322d2d32f83688b52698812/neo4j-monitoring-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jprocesses:jProcesses:1.6.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jprocesses/jProcesses/1.6.5/3251a4ccf8bf90291d8a52132a4e971f2c6566db/jProcesses-1.6.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jprocesses/jProcesses/1.6.5/5dd3d7e3f47e7de33a81953fb5cb60d6d3e785fd/jProcesses-1.6.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

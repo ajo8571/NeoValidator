@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-exceptions:4.4.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-exceptions/4.4.10/631f8c3aa03b7467f526f20252f3d68793148609/neo4j-exceptions-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-exceptions/4.4.10/64ce5b02a6a651662c3e2b9f8befa2c966329cec/neo4j-exceptions-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
