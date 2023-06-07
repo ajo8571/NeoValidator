@@ -1,0 +1,56 @@
+{ "labels": [
+    {
+      "name": "Person",
+      "properties": [
+        {"name": "name",
+          "type": "string"
+        }
+      ]
+    },
+
+    {
+      "name": "Student",
+      "parent_label": "Person",
+      "properties": [
+        {"name":  "name","type":"string", "type_constraint": {"like": "Omiyi"}},
+        {"name":  "uid", "type": "number", "required": true, "unique": true}
+      ]
+
+    },
+    {
+      "name": "Vehicle",
+      "properties": [
+        {"name": "id","type":"string", "required": true, "unique": true},
+        {"name": "permit_issued","type":"string", "type_constraint": {"like": "\\d\\d/\\d\\d/\\d\\d\\d\\d"}}
+      ]
+    },
+    {
+      "name": "Car",
+      "parent_label": "Vehicle",
+      "properties": [
+        {"name": "nickname", "type": "string"}
+      ]
+    },
+    {
+      "name": "Bus",
+      "properties": [
+        {"name": "nickname", "type": "string"}
+      ]
+    },
+    {
+      "name": "Boat",
+      "properties": [
+        {"name": "nickname", "type": "string"}
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "startLabel": "Person",
+      "endLabel": "Vehicle",
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "directed": true
+    }
+  ]
+}

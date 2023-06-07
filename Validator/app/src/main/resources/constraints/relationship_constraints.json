@@ -1,0 +1,11 @@
+{ "labels": [],
+  "relationships": [
+    {
+      "startLabel": "Person",
+      "endLabel": "Vehicle",
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "directed": true
+    }
+  ]
+}
