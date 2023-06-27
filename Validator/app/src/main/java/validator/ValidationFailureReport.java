@@ -65,7 +65,7 @@ public class ValidationFailureReport {
     }
     init+= String.format("\n\tThis Node failed on attribute '%s' with constraint '%s'.",
         failingAttribute, failingConstraint);
-    init += String.format("\n\tThis Node has value '%s' for attribute '%s'", actualValue,
+    init += String.format("\n\tThis Node has value '%s' for the property '%s'", actualValue,
         failingAttribute);
     return init;
   }

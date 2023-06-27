@@ -1,7 +1,11 @@
 package validator;
 
 import static helpers.GraphBuilder.deleteDir;
+import static validator.ConstraintVocabulary.MAX_CARDINALITY_INFINITY;
+import static validator.ConstraintVocabulary.NODE_PROPERTY_SEPARATOR_SYMBOL;
+import static validator.ConstraintVocabulary.getNodePropertyKey;
 
+import com.sun.xml.bind.v2.TODO;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -64,22 +68,50 @@ public class SchemaParser {
           throw new Exception(String.format(
               "\nNeoValidator Schema Exception: Invalid property type '%s' used in constraint definition for label '%s'", type, label));
         }
-        node.setProperty(name+"%_type", type);
-        node.setProperty(name+"%_unique",property.getOrDefault("unique", false));
-        node.setProperty(name+"%_required",property.getOrDefault("required", true));
+        node.setProperty(getNodePropertyKey(name,"type"), type);
+        node.setProperty(getNodePropertyKey(name, "unique"),property.getOrDefault("unique", false));
+        node.setProperty(getNodePropertyKey(name,"required"), property.getOrDefault("required", true));
+
         if(property.containsKey("type_constraint")){
           Map<String, Object> tc = (Map<String, Object>) property.get("type_constraint");
           for(String key : tc.keySet() ){
             if(ConstraintVocabulary.TYPE_CONSTRAINTS.get(type).contains(key)){
-              node.setProperty(name+"%_"+key, tc.get(key));
+              node.setProperty(name+NODE_PROPERTY_SEPARATOR_SYMBOL + ""+key, tc.get(key));
             }else{
               throw new Exception(String.format(
                   "\nNeoValidator Schema Exception: Invalid type constraint '%s' for type '%s' in constraint definition for label '%s'", key, type, label));
             }
           }
         }
-        node.setProperty(name+"%_required",property.getOrDefault("required", true));
       }
+      if(obj.containsKey("relationships")){
+        ArrayList<Map<String, Object>> rels = (ArrayList<Map<String, Object>>) obj.get("relationships");
+        for(int i =0 ; i < rels.size(); i++ ){
+          Map<String, Object> rel = rels.get(i);
+          String rel_name = (String) rel.getOrDefault("name", null);
+          if (rel_name == null){
+            throw new Exception(String.format(
+                "\nNeoValidator Schema Exception: relationship at position %d for label '%s' must contain a name", i, label));
+          }
+          try{
+            int maxCardinality = (int)rel.getOrDefault("maxCardinality", MAX_CARDINALITY_INFINITY);
+            int  minCardinality = (int) rel.getOrDefault("minCardinality", 0);
+            if(maxCardinality < MAX_CARDINALITY_INFINITY || minCardinality < 0){
+              throw new NumberFormatException();
+            }else if(maxCardinality != MAX_CARDINALITY_INFINITY && maxCardinality < minCardinality){
+              throw new Exception(String.format(
+                  "\nNeoValidator Schema Exception: maxCardinality must be less than or equal to minCardinality\nIssue occurred at label '%s' with relationship at position %d", label, i));
+
+            }
+            node.setProperty(getNodePropertyKey(rel_name, true), maxCardinality);
+            node.setProperty(getNodePropertyKey(rel_name, false), minCardinality);
+          }catch (NumberFormatException e){
+            throw new Exception(String.format(
+                "\nNeoValidator Schema Exception: maxCardinality and minCardinality must be positive integers\nIssue occurred at label '%s' with relationship at position %d", label, i));
+          }
+        }
+      }
+
     }
   }
 
@@ -104,8 +136,7 @@ public class SchemaParser {
     Transaction tx = schemaGraph.beginTx();
     for (int i = 0; i < relationshipConstraints.length(); i++){
       Map<String, Object> rel = relationshipConstraints.getJSONObject(i).toMap();
-
-
+      //TODO name may not be required for relationships
       if(!rel.containsKey("name")){
         throw new Exception("\nNeoValidator Schema Exception: field 'name' is required when defining relationship object");
       }
@@ -114,37 +145,15 @@ public class SchemaParser {
       }
       if(!rel.containsKey("endLabel")){
         throw new Exception("\nNeoValidator Schema Exception: field 'endLabel' is required when defining relationship object");
-
       }
 
       String startLabel = (String) rel.get("startLabel");
       String endLabel = (String) rel.get("endLabel");;
       String name = (String) rel.get("name");
-      Integer maxCardinality = null;
-      int minCardinality = 1;
-      if(rel.containsKey("maxCardinality")) {
-        try {
-          maxCardinality = (int) rel.get("maxCardinality");
-        } catch (NumberFormatException e) {
-          throw new Exception(
-              "\nNeoValidator Schema Exception: maxCardinality for relationship with name " + name
-                  + " must be an integer");
-        }
-      }
-      if(rel.containsKey("minCardinality")) {
-        try {
-          minCardinality = (int)rel.get("minCardinality");
-        } catch (NumberFormatException e) {
-          throw new Exception(
-              "\nNeoValidator Schema Exception: minCardinality for relationship with name " + name
-                  + " must be an integer");
-        }
-      }
+
       Node startNode = tx.getNodeById(labelIdMap.get(startLabel));
       Node endNode = tx.getNodeById(labelIdMap.get(endLabel));
       Relationship r = startNode.createRelationshipTo(endNode, RelationshipType.withName(name));
-      r.setProperty("maxCardinality", maxCardinality);
-      r.setProperty("minCardinality", minCardinality);
       if(rel.containsKey("properties")){
         ArrayList<Map<String, Object>> properties = (ArrayList<Map<String, Object>>) rel.get("properties");
         for (int j = 0; j < properties.size(); j++){
@@ -156,8 +165,8 @@ public class SchemaParser {
             throw new Exception("\nNeoValidator Schema Exception: Relationship with name "+ name+" has a property with name "+name+" has no type");
           }
           String propName = (String) prop.get("name");
-          r.setProperty(propName+"%_type", prop.get("type"));
-          r.setProperty(propName+"%_required", prop.getOrDefault("required", true));
+          r.setProperty(propName+NODE_PROPERTY_SEPARATOR_SYMBOL + "type", prop.get("type"));
+          r.setProperty(propName+NODE_PROPERTY_SEPARATOR_SYMBOL + "required", prop.getOrDefault("required", true));
         }
       }
     }

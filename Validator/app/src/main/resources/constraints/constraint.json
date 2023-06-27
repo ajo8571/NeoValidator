@@ -5,6 +5,13 @@
         {"name": "name",
           "type": "string"
         }
+      ],
+      "relationships": [
+        {
+          "name":"owns",
+          "maxCardinality": 10,
+          "minCardinality": 5
+        }
       ]
     },
 
@@ -46,10 +53,9 @@
   ],
   "relationships": [
     {
+      "name":"owns",
       "startLabel": "Person",
       "endLabel": "Vehicle",
-      "maxCardinality": 1,
-      "minCardinality": 0,
       "directed": true
     }
   ]

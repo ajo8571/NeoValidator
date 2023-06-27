@@ -42,8 +42,6 @@
       "name": "owns",
       "startLabel": "Person",
       "endLabel": "Vehicle",
-      "maxCardinality": 1,
-      "minCardinality": 0,
       "directed": true,
       "properties": [
         {"name":  "paymentMethod", "type": "string"}

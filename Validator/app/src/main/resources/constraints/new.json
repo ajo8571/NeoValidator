@@ -1,0 +1,23 @@
+{
+  "name": "Person",
+  "properties": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    {
+    "name": "address",
+    "type": "string",
+    "required": true,
+    "unique": false
+    },
+    {
+    "name": "year",
+    "type": "int",
+    "required": true,
+    "unique": false
+    }
+  ]
+}
