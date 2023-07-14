@@ -5,7 +5,6 @@ import static validator.ConstraintVocabulary.MAX_CARDINALITY_INFINITY;
 import static validator.ConstraintVocabulary.NODE_PROPERTY_SEPARATOR_SYMBOL;
 import static validator.ConstraintVocabulary.getNodePropertyKey;
 
-import com.sun.xml.bind.v2.TODO;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -67,6 +66,18 @@ public class SchemaParser {
         if(!ConstraintVocabulary.TYPES.contains(type)){
           throw new Exception(String.format(
               "\nNeoValidator Schema Exception: Invalid property type '%s' used in constraint definition for label '%s'", type, label));
+        }
+        JSONObject typeConstraints =  (JSONObject) property.getOrDefault("type_constraints", null);
+        if(typeConstraints!= null) {
+          for (String key : typeConstraints.keySet()) {
+            if (!ConstraintVocabulary.TYPE_CONSTRAINTS.get(type).contains(key)) {
+              throw new Exception(String.format(
+                  "\nNeoValidator Schema Exception: Invalid property type constraint '%s' for "
+                      + "property '%s' of type '%s' in property label '%s'", key, name, type,
+                  label));
+            }
+            node.setProperty(getNodePropertyKey(name, key), typeConstraints.get(key));
+          }
         }
         node.setProperty(getNodePropertyKey(name,"type"), type);
         node.setProperty(getNodePropertyKey(name, "unique"),property.getOrDefault("unique", false));
@@ -150,10 +161,12 @@ public class SchemaParser {
       String startLabel = (String) rel.get("startLabel");
       String endLabel = (String) rel.get("endLabel");;
       String name = (String) rel.get("name");
-
       Node startNode = tx.getNodeById(labelIdMap.get(startLabel));
       Node endNode = tx.getNodeById(labelIdMap.get(endLabel));
       Relationship r = startNode.createRelationshipTo(endNode, RelationshipType.withName(name));
+      r.setProperty("directed", rel.getOrDefault("directed", false));
+      r.setProperty("startLabel", startLabel);
+      r.setProperty("endLabel", endLabel);
       if(rel.containsKey("properties")){
         ArrayList<Map<String, Object>> properties = (ArrayList<Map<String, Object>>) rel.get("properties");
         for (int j = 0; j < properties.size(); j++){

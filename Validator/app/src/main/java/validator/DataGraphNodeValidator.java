@@ -107,9 +107,19 @@ public class DataGraphNodeValidator {
         break;
       case "type":
         switch ((String) constraint_value) {
-          case ConstraintVocabulary.NUMBER:
+          case ConstraintVocabulary.DECIMAL:
             try {
               long v =  (long) value;
+            } catch (NumberFormatException e) {
+              System.out.println(new ValidationFailureReport(dataNodelabel,
+                  schemaNodeLabel, key, constraint_type,
+                  (String) value,
+                  dataNode.getId()));
+            }
+            break;
+          case ConstraintVocabulary.INTEGER:
+            try {
+              int v =  (int)(long) value;
             } catch (NumberFormatException e) {
               System.out.println(new ValidationFailureReport(dataNodelabel,
                   schemaNodeLabel, key, constraint_type,

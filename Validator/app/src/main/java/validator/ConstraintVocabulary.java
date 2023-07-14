@@ -7,16 +7,35 @@ import java.util.Set;
 
 public class ConstraintVocabulary {
   public enum ConstraintTypes{
-    number,
+    integer,
+    decimal,
     bool,
     string
   }
 
-  public static final String NUMBER = "number";
+  //TYPES
+  public static final String INTEGER = "int";
+  public static final String DECIMAL = "long";
   public static final String BOOL = "bool";
   public static final String STRING = "string";
+
+  // NAMING CONVENTIONS
   public static final String NODE_PROPERTY_SEPARATOR_SYMBOL = "%_";
   public static final String NODE_RELATIONSHIP_DEFINITION_SYMBOL = "$_$RELATIONSHIP$_$";
+
+
+  //TYPE CONSTRAINTS
+  public static final String LESS_THAN = "lt";
+  public static final String LESS_THAN_OR_EQUAL = "lte";
+  public static final String GREATER_THAN_OR_EQUAL = "gte";
+  public static final String GREATER_THAN = "gt";
+  public static final String EQUAL = "eq";
+  public static final String LIKE = "like";
+  public static final String MOD = "mod";
+  public static final String ONE_OF = "oneof";
+
+
+
 
   public static final int MAX_CARDINALITY_INFINITY = -1;
   public static String getNodePropertyKey(String rel_name, boolean maxCardinality ){
@@ -33,12 +52,14 @@ public class ConstraintVocabulary {
 
 
 
-  public final static Set<String> TYPES = new HashSet<>(){{add(NUMBER); add(STRING); add(BOOL);}};
+  public final static Set<String> TYPES = new HashSet<>(){{add(INTEGER); add(DECIMAL); add(STRING); add(BOOL);}};
   public final static Map<String, HashSet<String>> TYPE_CONSTRAINTS = new HashMap<>(){
     {
-      put(NUMBER, new HashSet<>(){{add("eq");add("gt"); add("lt"); add("gte"); add("lte");}});
-      put(BOOL, new HashSet<>(){{add("eq");}});
-      put(STRING, new HashSet<>(){{add("eq");add("like");}});
+      put(INTEGER, new HashSet<>(){{add(EQUAL);add(GREATER_THAN); add(LESS_THAN); add(GREATER_THAN_OR_EQUAL); add(LESS_THAN_OR_EQUAL);add(MOD);add(ONE_OF);}});
+      put(BOOL, new HashSet<>(){{add(EQUAL);}});
+      put(STRING, new HashSet<>(){{add(EQUAL);add(GREATER_THAN); add(LESS_THAN); add(GREATER_THAN_OR_EQUAL); add(LESS_THAN_OR_EQUAL);add(LIKE);add(ONE_OF);}});
+      put(DECIMAL, new HashSet<>(){{add(EQUAL);add(GREATER_THAN); add(LESS_THAN); add(GREATER_THAN_OR_EQUAL); add(LESS_THAN_OR_EQUAL);add(ONE_OF);}});
+
     }
   };
 }

@@ -47,6 +47,25 @@ public class NeoValidator {
 			}
 			System.out.println("}");
 		}
+		System.out.println("------------------------Relationships---------------------------");
+		for( Relationship r : tx.getAllRelationships()){
+			if(!r.isType(RelationshipType.withName("$$childOf"))) {
+				String startLabel = (String) r.getProperty("startLabel");
+				String endLabel = (String) r.getProperty("endLabel");
+				boolean directed = (boolean) r.getProperty("directed");
+				if (directed) {
+					System.out.println("\n(:" + startLabel + ")-[:" + r.getType() + "]->(:" + endLabel + ")");
+				} else {
+					System.out.println("\n(:" + startLabel + ")-[:" + r.getType() + "]-(:" + endLabel + ")");
+				}
+				System.out.println("\tProperties:");
+				for (String key : r.getAllProperties().keySet()) {
+					System.out.print("\t\t");
+					System.out.print(key);
+					System.out.println(" : " + r.getProperty(key));
+				}
+			}
+		}
 		tx.commit();
 		tx.close();
 	}
@@ -85,7 +104,7 @@ public class NeoValidator {
 
 			long rootNodeId = SchemaParser.parseConstraintsAndBuildSchemaGraph(pathToConstraints, schemaGraphFile, true,
 					sg);
-			//showSchemaGraph(sg);
+			showSchemaGraph(sg);
 			validateGraph(sg, dg, rootNodeId);
 			schemaService.shutdown();
 			dataService.shutdown();
